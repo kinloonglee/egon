@@ -1,16 +1,18 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render, HttpResponse
 from app01 import models
+
+
 # Create your views here.
 
 
 def ab_render(request):
     # 视图函数必须要接受一个形参request
-    user_dict = {'username':'jason','age':18}
+    user_dict = {'username': 'jason', 'age': 18}
     # 第一种传值方式:更加的精确 节省资源
     # return render(request,'01 ab_render.html',{'data':user_dict,'date':123})
     # 第二种传值方式:当你要传的数据特别多的时候
     """locals会将所在的名称空间中所有的名字全部传递给html页面"""
-    return render(request,'01 ab_render.html',locals())
+    return render(request, '01 ab_render.html', locals())
 
 
 def login(request):
@@ -60,7 +62,8 @@ def login(request):
         # print(user_obj.password)
         if user_obj:
             # 比对密码是否一直
-            if password == user_obj.password:
+            print(password, type(password), user_obj.password, type(user_obj.password))
+            if password == str(user_obj.password):
                 return HttpResponse("登陆成功")
             else:
                 return HttpResponse("密码错误")
@@ -90,7 +93,12 @@ def reg(request):
         # print(res,res.username,res.password)
 
         # 第二种增加
-        user_obj = models.User(username=username,password=password)
+        user_obj = models.User(username=username, password=password)
         user_obj.save()  # 保存数据
     # 先给用户返回一个注册页面
-    return render(request,'reg.html')
+    return render(request, 'reg.html')
+
+
+def list_all(request):
+    query_set = models.User.objects.all()
+    return render(request, 'listall.html', locals())

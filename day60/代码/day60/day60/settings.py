@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'day60.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'day60',
+        'NAME': 'oldboy',
         'USER':'root',
-        'PASSWORD':'admin123',
+        'PASSWORD':'123456',
         'HOST':'127.0.0.1',
         'PORT':3306,
         'CHARSET':'utf8'

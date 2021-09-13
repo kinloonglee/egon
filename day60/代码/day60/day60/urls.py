@@ -18,11 +18,13 @@ from django.contrib import admin
 from app01 import views
 
 urlpatterns = [
+    url(r'^$', views.list_all),
     url(r'^admin/', admin.site.urls),
     # render
-    url(r'^ab_render/',views.ab_render),
+    url(r'^ab_render/', views.ab_render),
     # 登陆功能
-    url(r'^login/',views.login),
+    url(r'^login/', views.login),
     # 注册功能
-    url(r'^register/',views.reg)
+    url(r'^reg/', views.reg),
+
 ]
