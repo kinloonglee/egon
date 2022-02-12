@@ -1,10 +1,10 @@
 /*******************************************************************************
-* KindEditor - WYSIWYG HTML Editor for Internet
-* Copyright (C) 2006-2011 kindsoft.net
+KindEditor - WYSIWYG HTML Editor for Internet
+Copyright (C) 2006-2011 kindsoft.net
 *
-* @author Composite <ukjinplant@gmail.com>
-* @site http://www.kindsoft.net/
-* @licence http://www.kindsoft.net/license.php
+@author Composite <ukjinplant@gmail.com>
+@site http://www.kindsoft.net/
+@licence http://www.kindsoft.net/license.php
 *******************************************************************************/
 
 KindEditor.lang({

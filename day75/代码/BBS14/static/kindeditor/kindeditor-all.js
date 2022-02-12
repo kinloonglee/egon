@@ -1,11 +1,11 @@
 /*******************************************************************************
-* KindEditor - WYSIWYG HTML Editor for Internet
-* Copyright (C) 2006-2016 kindsoft.net
+KindEditor - WYSIWYG HTML Editor for Internet
+Copyright (C) 2006-2016 kindsoft.net
 *
-* @author Roddy <luolonghao@gmail.com>
-* @website http://www.kindsoft.net/
-* @licence http://www.kindsoft.net/license.php
-* @version 4.1.11 (2016-03-31)
+@author Roddy <luolonghao@gmail.com>
+@website http://www.kindsoft.net/
+@licence http://www.kindsoft.net/license.php
+@version 4.1.11 (2016-03-31)
 *******************************************************************************/
 (function (window, undefined) {
 	if (window.KindEditor) {
@@ -156,7 +156,8 @@ function _extend(child, parent, proto) {
 	child.prototype = childProto;
 	child.parent = parent ? parent.prototype : null;
 }
-
+
+
 function _json(text) {
 	var match;
 	if ((match = /\{[\s\S]*\}|\[[\s\S]*\]/.exec(text))) {
@@ -316,9 +317,12 @@ K.options = {
 
 
 var _useCapture = false;
-
-var _INPUT_KEY_MAP = _toMap('8,9,13,32,46,48..57,59,61,65..90,106,109..111,188,190..192,219..222');
-var _CURSORMOVE_KEY_MAP = _toMap('33..40');
+
+
+var _INPUT_KEY_MAP = _toMap('8,9,13,32,46,48..57,59,61,65..90,106,109..111,188,190..192,219..222');
+
+var _CURSORMOVE_KEY_MAP = _toMap('33..40');
+
 var _CHANGE_KEY_MAP = {};
 _each(_INPUT_KEY_MAP, function(key, val) {
 	_CHANGE_KEY_MAP[key] = val;
@@ -326,14 +330,16 @@ _each(_INPUT_KEY_MAP, function(key, val) {
 _each(_CURSORMOVE_KEY_MAP, function(key, val) {
 	_CHANGE_KEY_MAP[key] = val;
 });
-
+
+
 function _bindEvent(el, type, fn) {
 	if (el.addEventListener){
 		el.addEventListener(type, fn, _useCapture);
 	} else if (el.attachEvent){
 		el.attachEvent('on' + type, fn);
 	}
-}
+}
+
 function _unbindEvent(el, type, fn) {
 	if (el.removeEventListener){
 		el.removeEventListener(type, fn, _useCapture);
@@ -344,7 +350,8 @@ function _unbindEvent(el, type, fn) {
 var _EVENT_PROPS = ('altKey,attrChange,attrName,bubbles,button,cancelable,charCode,clientX,clientY,ctrlKey,currentTarget,' +
 	'data,detail,eventPhase,fromElement,handler,keyCode,metaKey,newValue,offsetX,offsetY,originalTarget,pageX,' +
 	'pageY,prevValue,relatedNode,relatedTarget,screenX,screenY,shiftKey,srcElement,target,toElement,view,wheelDelta,which').split(',');
-
+
+
 function KEvent(el, event) {
 	this.init(el, event);
 }
@@ -901,7 +908,8 @@ function _formatHtml(html, htmlTags, urlType, wellFormatted, indentChar) {
 	html = html.replace(/\n\s*\n/g, '\n');
 	html = html.replace(/<span id="__kindeditor_pre_newline__">\n/g, '\n');
 	return _trim(html);
-}
+}
+
 function _clearMsWord(html, htmlTags) {
 	html = html.replace(/<meta[\s\S]*?>/ig, '')
 		.replace(/<![\s\S]*?>/ig, '')
@@ -914,7 +922,8 @@ function _clearMsWord(html, htmlTags) {
 			return full.replace(/border-bottom:([#\w\s]+)/ig, 'border:$1');
 		});
 	return _formatHtml(html, htmlTags);
-}
+}
+
 function _mediaType(src) {
 	if (/\.(rm|rmvb)(\?|$)/i.test(src)) {
 		return 'audio/x-pn-realaudio-plugin';
@@ -923,7 +932,8 @@ function _mediaType(src) {
 		return 'application/x-shockwave-flash';
 	}
 	return 'video/x-ms-asf-plugin';
-}
+}
+
 function _mediaClass(type) {
 	if (/realaudio/i.test(type)) {
 		return 'ke-rm';
@@ -967,7 +977,10 @@ function _mediaImg(blankPath, attrs) {
 	html += 'data-ke-tag="' + escape(srcTag) + '" alt="" />';
 	return html;
 }
-
+
+
+
+
 function _tmpl(str, data) {
 	var fn = new Function("obj",
 		"var p=[],print=function(){p.push.apply(p,arguments);};" +
@@ -1304,7 +1317,8 @@ function _getScrollPos(doc) {
 	}
 	return {x : x, y : y};
 }
-
+
+
 function KNode(node) {
 	this.init(node);
 }
@@ -1940,7 +1954,8 @@ function _copyAndDelete(range, isCopy, isDelete) {
 		}
 	}
 	return isCopy ? frag : range;
-}
+}
+
 function _moveToElementText(range, el) {
 	var node = el;
 	while (node) {
@@ -1953,7 +1968,8 @@ function _moveToElementText(range, el) {
 	try {
 		range.moveToElementText(el);
 	} catch(e) {}
-}
+}
+
 function _getStartEnd(rng, isStart) {
 	var doc = rng.parentElement().ownerDocument,
 		pointRange = rng.duplicate();
@@ -2018,7 +2034,8 @@ function _getStartEnd(rng, isStart) {
 		}
 	}
 	return {node: startNode, offset: startPos};
-}
+}
+
 function _getEndRange(node, offset) {
 	var doc = node.ownerDocument || node,
 		range = doc.body.createTextRange();
@@ -2075,7 +2092,8 @@ function _getEndRange(node, offset) {
 	range.moveStart('character', offset);
 	K(dummy).remove();
 	return range;
-}
+}
+
 function _toRange(rng) {
 	var doc, range;
 	function tr2td(start) {
@@ -2108,7 +2126,8 @@ function _toRange(rng) {
 	range.setEnd(rng.endContainer, rng.endOffset);
 	return range;
 }
-
+
+
 function KRange(doc) {
 	this.init(doc);
 }
@@ -2526,12 +2545,14 @@ K.START_TO_END = _START_TO_END;
 K.END_TO_END = _END_TO_END;
 K.END_TO_START = _END_TO_START;
 
-
+
+
 function _nativeCommand(doc, key, val) {
 	try {
 		doc.execCommand(key, false, val);
 	} catch(e) {}
-}
+}
+
 function _nativeCommandValue(doc, key) {
 	var val = '';
 	try {
@@ -2541,11 +2562,13 @@ function _nativeCommandValue(doc, key) {
 		val = '';
 	}
 	return val;
-}
+}
+
 function _getSel(doc) {
 	var win = _getWin(doc);
 	return _IERANGE ? doc.selection : win.getSelection();
-}
+}
+
 function _getRng(doc) {
 	var sel = _getSel(doc), rng;
 	try {
@@ -2559,7 +2582,8 @@ function _getRng(doc) {
 		return null;
 	}
 	return rng;
-}
+}
+
 function _singleKeyMap(map) {
 	var newMap = {}, arr, v;
 	_each(map, function(key, val) {
@@ -2570,7 +2594,8 @@ function _singleKeyMap(map) {
 		}
 	});
 	return newMap;
-}
+}
+
 function _hasAttrOrCss(knode, map) {
 	return _hasAttrOrCssByKey(knode, map, '*') || _hasAttrOrCssByKey(knode, map);
 }
@@ -2601,7 +2626,8 @@ function _hasAttrOrCssByKey(knode, map, mapKey) {
 		}
 	}
 	return false;
-}
+}
+
 function _removeAttrOrCss(knode, map) {
 	if (knode.type != 1) {
 		return;
@@ -2639,20 +2665,26 @@ function _removeAttrOrCssByKey(knode, map, mapKey) {
 	if (allFlag) {
 		knode.remove(true);
 	}
-}
+}
+
 function _getInnerNode(knode) {
 	var inner = knode;
 	while (inner.first()) {
 		inner = inner.first();
 	}
 	return inner;
-}
+}
+
 function _isEmptyNode(knode) {
 	if (knode.type != 1 || knode.isSingle()) {
 		return false;
 	}
 	return knode.html().replace(/<[^>]+>/g, '') === '';
-}
+}
+
+
+
+
 function _mergeWrapper(a, b) {
 	a = a.clone(true);
 	var lastA = _getInnerNode(a), childA = a, merged = false;
@@ -2671,7 +2703,8 @@ function _mergeWrapper(a, b) {
 		b = b.first();
 	}
 	return a;
-}
+}
+
 function _wrapNode(knode, wrapper) {
 	wrapper = wrapper.clone(true);
 	if (knode.type == 3) {
@@ -2695,7 +2728,8 @@ function _wrapNode(knode, wrapper) {
 	}
 	nodeWrapper.replaceWith(wrapper);
 	return wrapper;
-}
+}
+
 function _mergeAttrs(knode, attrs, styles) {
 	_each(attrs, function(key, val) {
 		if (key !== 'style') {
@@ -2705,7 +2739,8 @@ function _mergeAttrs(knode, attrs, styles) {
 	_each(styles, function(key, val) {
 		knode.css(key, val);
 	});
-}
+}
+
 function _inPreElement(knode) {
 	while (knode && knode.name != 'body') {
 		if (_PRE_TAG_MAP[knode.name] || knode.name == 'div' && knode.hasClass('ke-script')) {
@@ -2714,7 +2749,8 @@ function _inPreElement(knode) {
 		knode = knode.parent();
 	}
 	return false;
-}
+}
+
 function KCmd(range) {
 	this.init(range);
 }
@@ -3398,7 +3434,8 @@ function _drag(options) {
 		}
 	});
 }
-
+
+
 function KWidget(options) {
 	this.init(options);
 }
@@ -3638,7 +3675,8 @@ function _elementVal(knode, val) {
 	}
 	return knode.html(val);
 }
-
+
+
 function KEdit(options) {
 	this.init(options);
 }
@@ -3899,7 +3937,8 @@ function _selectToolbar(name, fn) {
 		fn(knode);
 	}
 }
-
+
+
 function KToolbar(options) {
 	this.init(options);
 }
@@ -4019,7 +4058,8 @@ function _toolbar(options) {
 K.ToolbarClass = KToolbar;
 K.toolbar = _toolbar;
 
-
+
+
 function KMenu(options) {
 	this.init(options);
 }
@@ -4102,7 +4142,8 @@ function _menu(options) {
 K.MenuClass = KMenu;
 K.menu = _menu;
 
-
+
+
 function KColorPicker(options) {
 	this.init(options);
 }
@@ -4284,7 +4325,8 @@ function _createButton(arg) {
 	span.append(btn);
 	return span;
 }
-
+
+
 function KDialog(options) {
 	this.init(options);
 }
@@ -4483,7 +4525,8 @@ function _loadScript(url, fn) {
 		}
 	};
 }
-
+
+
 function _chopQuery(url) {
 	var index = url.indexOf('?');
 	return index > 0 ? url.substr(0, index) : url;
@@ -4579,7 +4622,8 @@ function _lang(mixed, langType) {
 		_language[langType][obj.ns][obj.key] = val;
 	});
 }
-
+
+
 function _getImageFromRange(range, fn) {
 	if (range.collapsed) {
 		return;
@@ -4790,7 +4834,9 @@ function _addBookmarkToStack(stack, bookmark) {
 		stack.push(bookmark);
 	}
 }
-
+
+
+
 function _undoToRedo(fromStack, toStack) {
 	var self = this, edit = self.edit,
 		body = edit.doc.body,
@@ -5549,7 +5595,8 @@ K.appendHtml = function(expr, val) {
 		this.appendHtml(val);
 	});
 };
-
+
+
 if (_IE && _V < 7) {
 	_nativeCommand(document, 'BackgroundImageCache', true);
 }
@@ -5559,7 +5606,8 @@ K.create = _create;
 K.instances = _instances;
 K.plugin = _plugin;
 K.lang = _lang;
-
+
+
 _plugin('core', function(K) {
 	var self = this,
 		shortcutKeys = {
@@ -5988,12 +6036,12 @@ _plugin('core', function(K) {
 				var attrs = _getAttrList(full);
 				var styles = _getCssList(attrs.style || '');
 				if (styles.display == 'none') {
-					return '<div class="ke-display-none" data-ke-input-tag="' + escape(full) + '"></div>';
-				}
-				return full;
-			});
+			return '<div class="ke-display-none" data-ke-input-tag="' + escape(full) + '"></div>';
 		}
-		return html.replace(/<embed[^>]*type="([^"]+)"[^>]*>(?:<\/embed>)?/ig, function(full) {
+				return full;
+	});
+}
+return html.replace(/<embed[^>]*type="([^"]+)"[^>]*>(?:<\/embed>)?/ig, function(full) {
 			var attrs = _getAttrList(full);
 			attrs.src = _undef(attrs.src, '');
 			attrs.width = _undef(attrs.width, 0);
@@ -6224,12 +6272,12 @@ KindEditor.lang({
 	'table.alignMiddle' : '中部',
 	'table.alignBottom' : '底部',
 	'table.alignBaseline' : '基线',
-	'table.border' : '边框',
-	'table.borderWidth' : '边框',
+table.border' : '边框',
+table.borderWidth' : '边框',
 	'table.borderColor' : '颜色',
-	'table.backgroundColor' : '背景颜色',
-	'map.address' : '地址: ',
-	'map.search' : '搜索',
+table.backgroundColor' : '背景颜色',
+map.address' : '地址: ',
+map.search' : '搜索',
 	'baidumap.address' : '地址: ',
 	'baidumap.search' : '搜索',
 	'baidumap.insertDynamicMap' : '插入动态地图',
@@ -6270,12 +6318,12 @@ KindEditor.lang({
 		'3.html' : '项目编号'
 	}
 }, 'zh-CN');
-KindEditor.options.langType = 'zh-CN';
-/*******************************************************************************
+ndEditor.options.langType = 'zh-CN';
+******************************************************************************
 * KindEditor - WYSIWYG HTML Editor for Internet
-* Copyright (C) 2006-2011 kindsoft.net
-*
-* @author Roddy <luolonghao@gmail.com>
+Copyright (C) 2006-2011 kindsoft.net
+
+@author Roddy <luolonghao@gmail.com>
 * @site http://www.kindsoft.net/
 * @licence http://www.kindsoft.net/license.php
 *******************************************************************************/
@@ -6308,20 +6356,20 @@ KindEditor.plugin('anchor', function(K) {
 				nameBox.val(unescape(img.attr('data-ke-name')));
 			}
 			nameBox[0].focus();
-			nameBox[0].select();
-		},
-		'delete' : function() {
-			self.plugin.getSelectedAnchor().remove();
-		}
-	};
+	nameBox[0].select();
+},
+'delete' : function() {
+	self.plugin.getSelectedAnchor().remove();
+}
+;
 	self.clickToolbar(name, self.plugin.anchor.edit);
 });
 
-/*******************************************************************************
+******************************************************************************
 * KindEditor - WYSIWYG HTML Editor for Internet
-* Copyright (C) 2006-2011 kindsoft.net
-*
-* @author Roddy <luolonghao@gmail.com>
+Copyright (C) 2006-2011 kindsoft.net
+
+@author Roddy <luolonghao@gmail.com>
 * @site http://www.kindsoft.net/
 * @licence http://www.kindsoft.net/license.php
 *******************************************************************************/
@@ -6404,12 +6452,12 @@ KindEditor.plugin('baidumap', function(K) {
 					var center = centerObj.lng + ',' + centerObj.lat;
 					var zoom = map.getZoom();
 					var url = [checkbox[0].checked ? self.pluginsPath + 'baidumap/index.html' : 'http://api.map.baidu.com/staticimage',
-						'?center=' + encodeURIComponent(center),
-						'&zoom=' + encodeURIComponent(zoom),
+				'?center=' + encodeURIComponent(center),
+				'&zoom=' + encodeURIComponent(zoom),
 						'&width=' + mapWidth,
-						'&height=' + mapHeight,
-						'&markers=' + encodeURIComponent(center),
-						'&markerStyles=' + encodeURIComponent('l,A')].join('');
+				'&height=' + mapHeight,
+				'&markers=' + encodeURIComponent(center),
+				'&markerStyles=' + encodeURIComponent('l,A')].join('');
 					if (checkbox[0].checked) {
 						self.insertHtml('<iframe src="' + url + '" frameborder="0" style="width:' + (mapWidth + 2) + 'px;height:' + (mapHeight + 2) + 'px;"></iframe>');
 					} else {
@@ -6459,7 +6507,8 @@ KindEditor.plugin('baidumap', function(K) {
 * @site http://www.kindsoft.net/
 * @licence http://www.kindsoft.net/license.php
 *******************************************************************************/
-
+
+
 KindEditor.plugin('map', function(K) {
 	var self = this, name = 'map', lang = self.lang(name + '.');
 	self.clickToolbar(name, function() {
@@ -6534,12 +6583,12 @@ KindEditor.plugin('map', function(K) {
 			'	};',
 			'	map = new google.maps.Map(document.getElementById("map_canvas"), options);',
 			'	geocoder = new google.maps.Geocoder();',
-			'	geocoder.geocode({latLng: latlng}, function(results, status) {',
-			'		if (status == google.maps.GeocoderStatus.OK) {',
+	'	geocoder.geocode({latLng: latlng}, function(results, status) {',
+	'		if (status == google.maps.GeocoderStatus.OK) {',
 			'			if (results[3]) {',
-			'				parent.document.getElementById("kindeditor_plugin_map_address").value = results[3].formatted_address;',
-			'			}',
-			'		}',
+	'				parent.document.getElementById("kindeditor_plugin_map_address").value = results[3].formatted_address;',
+	'			}',
+	'		}',
 			'	});',
 			'}',
 			'function search(address) {',
@@ -6563,12 +6612,12 @@ KindEditor.plugin('map', function(K) {
 			'<div id="map_canvas" style="width:100%; height:100%"></div>',
 			'</body></html>'].join('\n');
 		var iframe = K('<iframe class="ke-textarea" frameborder="0" src="' + self.pluginsPath + 'map/map.html" style="width:558px;height:360px;"></iframe>');
-		function ready() {
-			win = iframe[0].contentWindow;
+function ready() {
+	win = iframe[0].contentWindow;
 			doc = K.iframeDoc(iframe);
-		}
-		iframe.bind('load', function() {
-			iframe.unbind('load');
+}
+iframe.bind('load', function() {
+	iframe.unbind('load');
 			if (K.IE) {
 				ready();
 			} else {
@@ -6619,14 +6668,16 @@ KindEditor.plugin('clearhtml', function(K) {
 * @site http://www.kindsoft.net/
 * @licence http://www.kindsoft.net/license.php
 *******************************************************************************/
-
+
+
+
 KindEditor.plugin('code', function(K) {
-	var self = this, name = 'code';
-	self.clickToolbar(name, function() {
+ar self = this, name = 'code';
+elf.clickToolbar(name, function() {
 		var lang = self.lang(name + '.'),
-			html = ['<div style="padding:10px 20px;">',
-				'<div class="ke-dialog-row">',
-				'<select class="ke-code-type">',
+	html = ['<div style="padding:10px 20px;">',
+		'<div class="ke-dialog-row">',
+		'<select class="ke-code-type">',
 				'<option value="js">JavaScript</option>',
 				'<option value="html">HTML</option>',
 				'<option value="css">CSS</option>',
@@ -6750,12 +6801,12 @@ KindEditor.plugin('emoticons', function(K) {
 			for (var i = 0; i < rows; i++) {
 				var row = table.insertRow(i);
 				for (var j = 0; j < cols; j++) {
-					var cell = K(row.insertCell(j));
-					cell.addClass('ke-cell');
+			var cell = K(row.insertCell(j));
+			cell.addClass('ke-cell');
 					bindCellEvent(cell, j, num);
-					var span = K('<span class="ke-img"></span>')
-						.css('background-position', '-' + (24 * num) + 'px 0px')
-						.css('background-image', 'url(' + path + 'static.gif)');
+			var span = K('<span class="ke-img"></span>')
+				.css('background-position', '-' + (24 * num) + 'px 0px')
+				.css('background-image', 'url(' + path + 'static.gif)');
 					cell.append(span);
 					elements.push(cell);
 					num++;
@@ -6932,12 +6983,12 @@ KindEditor.plugin('filemanager', function(K) {
 				})
 				.mouseout(function(e) {
 					K(this).removeClass('ke-on');
-				});
-				var iconUrl = imgPath + (data.is_dir ? 'folder-16.gif' : 'file-16.gif'),
+		});
+		var iconUrl = imgPath + (data.is_dir ? 'folder-16.gif' : 'file-16.gif'),
 					img = K('<img src="' + iconUrl + '" width="16" height="16" alt="' + data.filename + '" align="absmiddle" />'),
-					cell0 = K(row[0].insertCell(0)).addClass('ke-cell ke-name').append(img).append(document.createTextNode(' ' + data.filename));
-				if (!data.is_dir || data.has_file) {
-					row.css('cursor', 'pointer');
+			cell0 = K(row[0].insertCell(0)).addClass('ke-cell ke-name').append(img).append(document.createTextNode(' ' + data.filename));
+		if (!data.is_dir || data.has_file) {
+			row.css('cursor', 'pointer');
 					cell0.attr('title', data.filename);
 					bindEvent(cell0, result, data, createList);
 				} else {
@@ -7086,12 +7137,12 @@ KindEditor.plugin('flash', function(K) {
 						}
 					},
 					afterError : function(html) {
-						dialog.hideLoading();
-						self.errorDialog(html);
+				dialog.hideLoading();
+				self.errorDialog(html);
 					}
-				});
-				uploadbutton.fileBox.change(function(e) {
-					dialog.showLoading(self.lang('uploadLoading'));
+		});
+		uploadbutton.fileBox.change(function(e) {
+			dialog.showLoading(self.lang('uploadLoading'));
 					uploadbutton.submit();
 				});
 			} else {
@@ -7395,12 +7446,12 @@ KindEditor.plugin('image', function(K) {
 			if (this.value === options.imageAlign) {
 				this.checked = true;
 				return false;
-			}
-		});
+	}
+});
 		if (showRemote && tabIndex === 0) {
-			urlBox[0].focus();
-			urlBox[0].select();
-		}
+	urlBox[0].focus();
+	urlBox[0].select();
+}
 		return dialog;
 	};
 	self.plugin.image = {
@@ -7529,12 +7580,12 @@ KindEditor.plugin('insertfile', function(K) {
 						alert(self.lang('uploadSuccess'));
 					} else {
 						alert(data.message);
-					}
-				},
+			}
+		},
 				afterError : function(html) {
-					dialog.hideLoading();
-					self.errorDialog(html);
-				}
+			dialog.hideLoading();
+			self.errorDialog(html);
+		}
 			});
 			uploadbutton.fileBox.change(function(e) {
 				dialog.showLoading(self.lang('uploadLoading'));
@@ -7567,12 +7618,12 @@ KindEditor.plugin('insertfile', function(K) {
 		urlBox.val(fileUrl);
 		titleBox.val(fileTitle);
 		urlBox[0].focus();
-		urlBox[0].select();
-	};
+urlBox[0].select();
+;
 	self.clickToolbar(name, function() {
-		self.plugin.fileDialog({
-			clickFn : function(url, title) {
-				var html = '<a class="ke-insertfile" href="' + url + '" data-ke-src="' + url + '" target="_blank">' + title + '</a>';
+self.plugin.fileDialog({
+	clickFn : function(url, title) {
+		var html = '<a class="ke-insertfile" href="' + url + '" data-ke-src="' + url + '" target="_blank">' + title + '</a>';
 				self.insertHtml(html).hideDialog().focus();
 			}
 		});
@@ -7631,12 +7682,12 @@ KindEditor.plugin('link', function(K) {
 		edit : function() {
 			var lang = self.lang(name + '.'),
 				html = '<div style="padding:20px;">' +
-					'<div class="ke-dialog-row">' +
-					'<label for="keUrl" style="width:60px;">' + lang.url + '</label>' +
+			'<div class="ke-dialog-row">' +
+			'<label for="keUrl" style="width:60px;">' + lang.url + '</label>' +
 					'<input class="ke-input-text" type="text" id="keUrl" name="url" value="" style="width:260px;" /></div>' +
-					'<div class="ke-dialog-row"">' +
-					'<label for="keType" style="width:60px;">' + lang.linkType + '</label>' +
-					'<select id="keType" name="type"></select>' +
+			'<div class="ke-dialog-row"">' +
+			'<label for="keType" style="width:60px;">' + lang.linkType + '</label>' +
+			'<select id="keType" name="type"></select>' +
 					'</div>' +
 					'</div>',
 				dialog = self.createDialog({
@@ -7793,12 +7844,12 @@ KindEditor.plugin('media', function(K) {
 					},
 					afterError : function(html) {
 						dialog.hideLoading();
-						self.errorDialog(html);
-					}
+				self.errorDialog(html);
+			}
 				});
-				uploadbutton.fileBox.change(function(e) {
-					dialog.showLoading(self.lang('uploadLoading'));
-					uploadbutton.submit();
+		uploadbutton.fileBox.change(function(e) {
+			dialog.showLoading(self.lang('uploadLoading'));
+			uploadbutton.submit();
 				});
 			} else {
 				K('.ke-upload-button', div).hide();
@@ -8832,12 +8883,12 @@ if (typeof(SWFUpload) === "function") {
 		};
 	})(SWFUpload.prototype.initSettings);
 	SWFUpload.prototype.startUpload = function (fileID) {
-		this.queueSettings.queue_cancelled_flag = false;
-		this.callFlash("StartUpload", [fileID]);
+this.queueSettings.queue_cancelled_flag = false;
+this.callFlash("StartUpload", [fileID]);
 	};
-	SWFUpload.prototype.cancelQueue = function () {
-		this.queueSettings.queue_cancelled_flag = true;
-		this.stopUpload();
+WFUpload.prototype.cancelQueue = function () {
+this.queueSettings.queue_cancelled_flag = true;
+this.stopUpload();
 		var stats = this.getStats();
 		while (stats.files_queued > 0) {
 			this.cancelUpload();
@@ -8858,12 +8909,12 @@ if (typeof(SWFUpload) === "function") {
 		var continueUpload;
 		if (file.filestatus === SWFUpload.FILE_STATUS.COMPLETE) {
 			this.queueSettings.queue_upload_count++;
-		}
-		if (typeof(user_upload_complete_handler) === "function") {
+}
+if (typeof(user_upload_complete_handler) === "function") {
 			continueUpload = (user_upload_complete_handler.call(this, file) === false) ? false : true;
-		} else if (file.filestatus === SWFUpload.FILE_STATUS.QUEUED) {
-			continueUpload = false;
-		} else {
+} else if (file.filestatus === SWFUpload.FILE_STATUS.QUEUED) {
+	continueUpload = false;
+} else {
 			continueUpload = true;
 		}
 		if (continueUpload) {
@@ -8899,12 +8950,12 @@ KindEditor.plugin('pagebreak', function(K) {
 		self.focus();
 		var tail = self.newlineTag == 'br' || K.WEBKIT ? '' : '<span id="__kindeditor_tail_tag__"></span>';
 		self.insertHtml(pagebreakHtml + tail);
-		if (tail !== '') {
-			var p = K('#__kindeditor_tail_tag__', self.edit.doc);
+if (tail !== '') {
+	var p = K('#__kindeditor_tail_tag__', self.edit.doc);
 			range.selectNodeContents(p[0]);
-			p.removeAttr('id');
-			cmd.select();
-		}
+	p.removeAttr('id');
+	cmd.select();
+}
 	});
 });
 
@@ -8930,12 +8981,12 @@ KindEditor.plugin('plainpaste', function(K) {
 				title : self.lang(name),
 				body : html,
 				yesBtn : {
-					name : self.lang('yes'),
-					click : function(e) {
+			name : self.lang('yes'),
+			click : function(e) {
 						var html = textarea.val();
-						html = K.escape(html);
-						html = html.replace(/ {2}/g, ' &nbsp;');
-						if (self.newlineTag == 'p') {
+				html = K.escape(html);
+				html = html.replace(/ {2}/g, ' &nbsp;');
+				if (self.newlineTag == 'p') {
 							html = html.replace(/^/, '<p>').replace(/$/, '</p>').replace(/\n/g, '</p><p>');
 						} else {
 							html = html.replace(/\n/g, '<br />$&');
@@ -8986,12 +9037,12 @@ KindEditor.plugin('preview', function(K) {
 *
 * @author Roddy <luolonghao@gmail.com>
 * @site http://www.kindsoft.net/
-* @licence http://www.kindsoft.net/license.php
-*******************************************************************************/
+@licence http://www.kindsoft.net/license.php
+*****************************************************************************/
 KindEditor.plugin('quickformat', function(K) {
-	var self = this, name = 'quickformat',
-		blockMap = K.toMap('blockquote,center,div,h1,h2,h3,h4,h5,h6,p');
-	function getFirstChild(knode) {
+ar self = this, name = 'quickformat',
+blockMap = K.toMap('blockquote,center,div,h1,h2,h3,h4,h5,h6,p');
+unction getFirstChild(knode) {
 		var child = knode.first();
 		while (child && child.first()) {
 			child = child.first();
@@ -9661,12 +9712,12 @@ KindEditor.plugin('table', function(K) {
 			self.cmd.select();
 			self.addBookmark();
 		},
-		coldelete : function() {
-			var table = self.plugin.getSelectedTable()[0],
+coldelete : function() {
+	var table = self.plugin.getSelectedTable()[0],
 				row = self.plugin.getSelectedRow()[0],
-				cell = self.plugin.getSelectedCell()[0],
-				index = cell.cellIndex;
-			for (var i = 0, len = table.rows.length; i < len; i++) {
+		cell = self.plugin.getSelectedCell()[0],
+		index = cell.cellIndex;
+	for (var i = 0, len = table.rows.length; i < len; i++) {
 				var newRow = table.rows[i],
 					newCell = newRow.cells[index];
 				if (newCell.colSpan > 1) {
@@ -9717,12 +9768,12 @@ KindEditor.plugin('table', function(K) {
 *
 * @author Roddy <luolonghao@gmail.com>
 * @site http://www.kindsoft.net/
-* @licence http://www.kindsoft.net/license.php
-*******************************************************************************/
+@licence http://www.kindsoft.net/license.php
+*****************************************************************************/
 KindEditor.plugin('template', function(K) {
-	var self = this, name = 'template', lang = self.lang(name + '.'),
-		htmlPath = self.pluginsPath + name + '/html/';
-	function getFilePath(fileName) {
+ar self = this, name = 'template', lang = self.lang(name + '.'),
+htmlPath = self.pluginsPath + name + '/html/';
+unction getFilePath(fileName) {
 		return htmlPath + fileName + '?ver=' + encodeURIComponent(K.DEBUG ? K.TIME : K.VERSION);
 	}
 	self.clickToolbar(name, function() {
