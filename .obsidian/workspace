@@ -1,0 +1,113 @@
+{
+  "main": {
+    "id": "bbf282ed7dec432c",
+    "type": "split",
+    "children": [
+      {
+        "id": "8d8002ce673a012c",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "day42/今日笔记.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "016596c1069c7de8",
+    "type": "split",
+    "children": [
+      {
+        "id": "11adf89efff39496",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "281d59c9e45d046b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "fb595fb4bf7738af",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e1495e17367c0b61",
+    "type": "split",
+    "children": [
+      {
+        "id": "701c68c3065878dd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d7b2298292f221eb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "day42/今日笔记.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8a9db222cdc6d43f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "day42/今日笔记.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "8d8002ce673a012c",
+  "lastOpenFiles": [
+    "day42/今日笔记.md",
+    "assets/1594001228907.png.md",
+    "day75/今日内容.md",
+    "day75/代码/BBS14/media/avatar/image-20200213222158068.png",
+    "day75/代码/BBS14/media/avatar/default.png",
+    "day75/代码/BBS14/media/avatar/111.jpg",
+    "day75/代码/BBS14/media/article_img/image-20200213222158068.png",
+    "day75/代码/BBS14/media/article_img/image-20200210144339453.png",
+    "day58/今日内容.md",
+    "day80/代码和笔记/drf-day01.md"
+  ]
+}
