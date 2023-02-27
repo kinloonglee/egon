@@ -68,7 +68,7 @@ https://api.map.baidu.com/place/v2/search?ak=6E823f587c95f0148c19993539b99295&re
 
 # 解析json的网站
 http://www.json.cn/
-    
+  
 #请求头中User-Agent：客户端的类型
 # 请求头中加其他参数：
 # 批量接口导出和测试（实操一下）
@@ -77,8 +77,6 @@ http://www.json.cn/
 ```
 
 ![1594001178121](.\assets\1594001228907.png)
-
-
 
 ## 4 Restful规范（重点）
 
@@ -131,7 +129,7 @@ RESTful是一种定义Web API接口的设计风格，尤其适用于前后端分
     - https://api.example.com/v1/zoos?page=2&per_page=100：指定第几页，以及每页的记录数
     - https://api.example.com/v1/zoos?sortby=name&order=asc：指定返回结果按照哪个属性排序，以及排序顺序
     - https://api.example.com/v1/zoos?animal_type_id=1：指定筛选条件
-        
+      
 7 响应状态码
    7.1 正常响应
     - 响应状态码2xx
@@ -153,7 +151,7 @@ RESTful是一种定义Web API接口的设计风格，尤其适用于前后端分
     {
         error: "无权限操作"
     }
-    
+  
  9 返回结果，针对不同操作，服务器向用户返回的结果应该符合以下规范
     GET /collection：返回资源对象的列表（数组）
     GET /collection/resource：返回单个资源对象
@@ -161,7 +159,7 @@ RESTful是一种定义Web API接口的设计风格，尤其适用于前后端分
     PUT /collection/resource：返回完整的资源对象
     PATCH /collection/resource：返回完整的资源对象
     DELETE /collection/resource：返回一个空文档
-    
+  
  10 需要url请求的资源需要访问资源的请求链接
      # Hypermedia API，RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么
         {
@@ -177,11 +175,13 @@ RESTful是一种定义Web API接口的设计风格，尤其适用于前后端分
         }
 ```
 
-
-
 ## 5 drf的安装和简单使用
 
 ```python
+##我的python3.9.7 django==2.2.28  drf=3.10.3
+切换到虚拟环境中 再pip install pymysql
+decode修改为encode
+
 # 安装：pip install djangorestframework==3.10.3
 # 使用
 	1 在setting.py 的app中注册
@@ -220,11 +220,9 @@ RESTful是一种定义Web API接口的设计风格，尤其适用于前后端分
         #这是什么意思？两个列表相加
         # router.urls  列表
         urlpatterns += router.urls
-        
+  
     6 启动，在postman中测试即可
 ```
-
-
 
 ## 3 cbv源码
 
@@ -262,12 +260,6 @@ def dispatch(self, request, *args, **kwargs):
         return handler(request, *args, **kwargs)  #执行get(request)
 ```
 
-
-
-
-
-
-
 ## 4 APIView源码分析
 
 ```python
@@ -285,7 +277,7 @@ path('booksapiview/', views.BooksAPIView.as_view()),  #在这个地方应该写�
  
 
 #请求来了---》路由匹配上---》view（request）---》调用了self.dispatch(),会执行apiview的dispatch
-    
+  
 # APIView的dispatch方法
     def dispatch(self, request, *args, **kwargs):
 
@@ -335,8 +327,6 @@ path('booksapiview/', views.BooksAPIView.as_view()),  #在这个地方应该写�
         self.check_throttles(request)
 ```
 
-
-
 ```python
 
 from rest_framework.request import Request
@@ -359,7 +349,7 @@ from rest_framework.request import Request
         More semantically correct name for request.GET.
         """
         return self._request.GET
-    
+  
     #视图类中
      print(request.query_params)  #get请求，地址中的参数
      # 原来在
@@ -367,13 +357,7 @@ from rest_framework.request import Request
 
 ```
 
-
-
-
-
 # 补充
-
-
 
 ## 1 查看源码
 
@@ -402,8 +386,6 @@ print(foo.name)
 path('tset/', csrf_exempt(views.test)),
 ```
 
-
-
 ## 作业
 
 ## 1 用postman，用django写几个接口，测试，导出文件
@@ -411,10 +393,3 @@ path('tset/', csrf_exempt(views.test)),
 ## 2 新建一个图书表，5个符合restful规范的接口，用CBV的APIView实现
 
 ## 3 rest_framework的Resquest类和APIView类，流程，你走一遍，整理成自己的话
-
-
-
-
-
-
-
