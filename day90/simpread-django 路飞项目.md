@@ -792,7 +792,6 @@ python manage.py migrate
 
 ![1679108380233](image/simpread-django路飞项目/1679108380233.jpg)
 
-
 ### 重构项目目录
 
 ```
@@ -1189,6 +1188,8 @@ response=>{ console.log(response)}
 
 4 xadmin 后台管理
 -----------------
+
+![1682547421838](image/simpread-django路飞项目/1682547421838.jpg)
 
 ```
 # 1 安装 pip install https://codeload.github.com/sshwsfc/xadmin/zip/django2
